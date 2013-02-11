@@ -4,6 +4,9 @@
 Redis Sentinel wrapper for Node.js.
 Provides methods and events for the Redis Sentinel API.
 
+![Sentinel](https://raw.github.com/JvrBaena/node-sentinel/master/stuff/sentinel.gif)
+
+
 ## Installation
 ```
   npm install node-sentinel
