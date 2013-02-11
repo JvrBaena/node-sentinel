@@ -1,0 +1,22 @@
+{
+  "name": "node-sentinel",
+  "description": "Redis Sentinel wrapper for Node.js",
+  "main": "./lib/sentinel.js",
+  "author": "Javier Baena",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JvrBaena/node-sentinel"
+  },
+  "bugs": {
+    "url": "https://github.com/JvrBaena/node-sentinel/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "dependencies": {
+    "redis": "~0.8.2"
+  }
+}
