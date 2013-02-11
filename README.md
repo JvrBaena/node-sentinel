@@ -91,7 +91,7 @@ var Sentinel = require('node-sentinel'),
     });
 
 ```
-
+**TODO: Add description for each API method and each event**
 
 
 
