@@ -61,7 +61,7 @@ var Sentinel = require('node-sentinel'),
         break;
         case 'selecting-slave':
           ...
-        break:
+        break;
         case 'slave-selected':
           ...
         break;
