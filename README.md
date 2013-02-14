@@ -19,6 +19,11 @@ var Sentinel = require('node-sentinel'),
     //init with ip and port for the sentinel server
     s = new Sentinel('127.0.0.1','26379');
     /******* Sentinel API examples *******/
+
+    s.ping(function(err, pong) {
+      ...
+    });
+
     s.masters(function(err, masters) {
     
       /* masters contains
@@ -33,8 +38,58 @@ var Sentinel = require('node-sentinel'),
         'info-refresh': '9101',
         'num-slaves': '1',
         'num-other-sentinels': '2',
-        quorum: '2' }]    
+        quorum: '2' },
+
+        ... ]    
         */
+    });
+
+    s.slaves('mymaster', function(err, slaves) {
+
+      /* slaves contains
+      [ { name: '127.0.0.1:6380',
+          ip: '127.0.0.1',
+          port: '6380',
+          runid: '',
+          flags: 'slave',
+          'pending-commands': '0',
+          'last-ok-ping-reply': '389',
+          'last-ping-reply': '389',
+          'info-refresh': '1195',
+          'master-link-down-time': '0',
+          'master-link-status': 'ok',
+          'master-host': '127.0.0.1',
+          'master-port': '6379',
+          'slave-priority': '100' },
+
+          ... ]      
+
+       */
+    });
+
+    s.sentinels('mymaster', function(err, sentinels) {
+
+      /* sentinels contains
+        [ { name: '127.0.0.1:26381',
+            ip: '127.0.0.1',
+            port: '26381',
+            runid: '8ba13b49bafd6154967b918039cc489c5857d4c7',
+            flags: 'sentinel',
+            'pending-commands': '0',
+            'last-ok-ping-reply': '560',
+            'last-ping-reply': '560',
+            'last-hello-message': '2902',
+            'can-failover-its-master': '1' },
+
+          ... ]
+       */
+
+    });
+
+    s.reset('mymaster', function(err, success) {
+
+      ...
+
     });
     
     s.getMasterAddress('mymaster', function(err, masterInfo) {
@@ -48,6 +103,15 @@ var Sentinel = require('node-sentinel'),
       { isDown: false,  leaderSentinel: '7ca87187f80adc20979fb61efec296f965bee515' }
       */
     });
+
+    
+    s.isLeader(masterHost, masterPort, function(err, isLeader) {
+
+      ...
+      
+    });
+
+
     /******* Sentinel pub/sub messages events *******/
     
     s.on('failover-triggered', function(data) {
